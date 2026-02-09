@@ -119,21 +119,27 @@ PORT=3000
 
 ---
 
-## Deployment (Vercel, Railway, etc.)
+## Deployment (Vercel)
 
-When deploying, add the same variables as **Environment Variables** in your hosting dashboard:
+This project uses a Vercel serverless function at `api/contact.js` for the contact form.
 
-| Variable     | Value                    |
-|-------------|--------------------------|
-| SMTP_HOST   | smtp.gmail.com           |
-| SMTP_PORT   | 587                      |
-| SMTP_SECURE | false                    |
-| SMTP_USER   | your-email@gmail.com     |
-| SMTP_PASS   | your-app-password        |
-| SMTP_FROM   | your-email@gmail.com     |
+### Add Environment Variables in Vercel
+
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard) → your project
+2. **Settings** → **Environment Variables**
+3. Add each variable (for Production, Preview, and Development):
+
+| Name        | Value                      |
+|-------------|----------------------------|
+| SMTP_HOST   | smtp.gmail.com             |
+| SMTP_PORT   | 587                        |
+| SMTP_SECURE | false                      |
+| SMTP_USER   | your-gmail@gmail.com       |
+| SMTP_PASS   | your-app-password          |
+| SMTP_FROM   | your-gmail@gmail.com       |
 | CONTACT_TO  | contact@drsahiwellness.com |
 
-**Note:** The Node.js backend (`server.js`) must be deployed separately. Vercel can host it as a serverless function, or use Railway, Render, or a VPS.
+4. **Redeploy** the project after adding variables (Deployments → ⋮ → Redeploy)
 
 ---
 
