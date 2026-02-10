@@ -398,6 +398,11 @@ a {
   font-size: clamp(1.8rem, 2.5vw, 2.3rem);
   font-weight: 600;
   margin: 0.3rem 0 1rem;
+  text-align: left;
+}
+
+.about-copy {
+  text-align: justify;
 }
 
 .about-copy p {
