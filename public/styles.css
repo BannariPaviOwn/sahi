@@ -547,9 +547,17 @@ a {
   align-items: center;
 }
 
-.outreach-copy h2 {
+.outreach-heading {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.outreach-copy h2,
+.outreach-sub {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  font-weight: 500;
   margin: 0.3rem 0 1rem;
 }
 
