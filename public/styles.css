@@ -58,7 +58,7 @@ a {
 }
 
 .section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   position: relative;
 }
 
@@ -73,7 +73,7 @@ a {
 .section-header {
   text-align: center;
   max-width: 32rem;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3rem;
 }
 
 .section-kicker {
@@ -1148,7 +1148,7 @@ a {
 
 @media (max-width: 640px) {
   .section {
-    padding: 3.5rem 0;
+    padding: 3rem 0;
   }
 
   .hero-title {
