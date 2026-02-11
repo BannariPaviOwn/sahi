@@ -18,11 +18,16 @@
 <body>
   <header class="navbar">
     <div class="container nav-inner">
-      <div class="logo">
+      <a href="#hero" class="logo">
         <span class="logo-mark">◎</span>
-        <span class="logo-text">Dr. Sahi <span>Psychology & Wellness</span></span>
-      </div>
-      <nav class="nav-links">
+        <span class="logo-text">Dr. Sahi <span class="logo-tag">Psychology & Wellness</span></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="nav-links" aria-hidden="true">
         <a href="#hero">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -30,8 +35,9 @@
         <a href="#how-it-works">How It Works</a>
         <a href="#outreach">Outreach</a>
         <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta nav-cta-mobile">Begin a Conversation</a>
       </nav>
-      <a href="#contact" class="nav-cta">Begin a Conversation</a>
+      <a href="#contact" class="nav-cta nav-cta-desk">Begin a Conversation</a>
     </div>
   </header>
 
