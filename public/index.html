@@ -101,22 +101,68 @@
         </div>
 
         <div class="services-grid">
-          <article class="service-card" data-animate="fade-up">
+          <article class="service-card service-card-expandable service-card-inline" data-animate="fade-up">
             <div class="service-card-img" title="Individual counselling">
               <img src="images/services/indivudual_conselling.png" alt="Individual counselling" />
             </div>
             <div class="service-card-body">
-              <h3>Individual Counselling</h3>
-              <p>A calm, compassionate space to pause, breathe, and speak freely—without judgment or pressure. We gently explore stress, anxiety, low mood, and life changes at a pace that feels safe for you.</p>
+              <h3>Individual Counselling & Psychotherapy</h3>
+              <p class="service-teaser">Individual therapy offers a confidential and structured space to understand emotional patterns, reduce distress, and build resilience.</p>
+              <div class="service-detail" id="individual-counselling-detail" aria-hidden="true">
+                <p><strong>This may be helpful if you are experiencing:</strong></p>
+                <ul>
+                  <li>Persistent anxiety or overthinking</li>
+                  <li>Low mood or loss of motivation</li>
+                  <li>Work-related stress or burnout</li>
+                  <li>Emotional overwhelm</li>
+                  <li>Grief or major life transitions</li>
+                  <li>Relationship difficulties</li>
+                  <li>Self-doubt or identity concerns</li>
+                </ul>
+                <p><strong>What the process involves:</strong></p>
+                <ul>
+                  <li>An initial psychological assessment</li>
+                  <li>Collaborative goal setting</li>
+                  <li>Evidence-informed therapeutic approaches</li>
+                  <li>Skill-building for emotional regulation</li>
+                  <li>Periodic review of progress</li>
+                </ul>
+                <p><strong>Outcome:</strong> Greater emotional clarity, improved coping capacity, and psychological stability aligned with your personal values.</p>
+              </div>
+              <button type="button" class="service-read-more" aria-expanded="false" aria-controls="individual-counselling-detail" data-service-toggle data-service-expand="inline">
+                Read more
+              </button>
             </div>
           </article>
-          <article class="service-card" data-animate="fade-up">
-            <div class="service-card-img" title="Individual counselling">
-              <img src="images/services/child.png" alt="Individual counselling" />
+          <article class="service-card service-card-expandable" data-animate="fade-up">
+            <div class="service-card-img" title="Child and adolescent counselling">
+              <img src="images/services/child.png" alt="Child and adolescent counselling" />
             </div>
             <div class="service-card-body">
-              <h3>Child & Adolescent Support</h3>
-              <p>Helping children and young people feel seen, understood, and emotionally safe—alongside gentle guidance and reassurance for parents.</p>
+              <h3>Child & Adolescent Counselling</h3>
+              <p class="service-teaser">Children and adolescents often experience emotional strain in ways that are not always visible. This service supports emotional development, behavioural regulation, and healthy adjustment.</p>
+              <div class="service-detail" id="child-adolescent-detail" aria-hidden="true">
+                <p><strong>Common concerns:</strong></p>
+                <ul>
+                  <li>Academic or exam-related stress</li>
+                  <li>School refusal or anxiety</li>
+                  <li>Emotional outbursts</li>
+                  <li>Peer relationship challenges</li>
+                  <li>Adjustment to family changes</li>
+                  <li>Low confidence</li>
+                </ul>
+                <p><strong>Approach:</strong></p>
+                <ul>
+                  <li>Developmentally appropriate therapeutic methods</li>
+                  <li>Emotional literacy and regulation skill-building</li>
+                  <li>Structured behavioural guidance where required</li>
+                  <li>Parent consultation sessions for consistency and support</li>
+                </ul>
+                <p><strong>Outcome:</strong> Improved emotional expression, enhanced coping skills, and strengthened family communication.</p>
+              </div>
+              <button type="button" class="service-read-more" aria-expanded="false" aria-controls="child-adolescent-detail" data-service-toggle data-expand-label="Learn more" data-collapse-label="Show less">
+                Learn more
+              </button>
             </div>
           </article>
           <article class="service-card" data-animate="fade-up">
@@ -377,6 +423,18 @@
       </p>
     </div>
   </footer>
+
+  <!-- Service detail modal (popup) -->
+  <div id="service-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="service-modal-title">
+    <div class="modal-backdrop" data-modal-close></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="service-modal-title" class="modal-title"></h2>
+        <button type="button" class="modal-close" aria-label="Close" data-modal-close></button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

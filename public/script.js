@@ -161,6 +161,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Service card: open detail in modal popup
+  const serviceModal = document.getElementById("service-modal");
+  const modalTitleEl = document.getElementById("service-modal-title");
+  const modalBodyEl = serviceModal?.querySelector(".modal-body");
+
+  function openServiceModal(title, detailContent) {
+    if (!serviceModal || !modalTitleEl || !modalBodyEl) return;
+    modalTitleEl.textContent = title;
+    modalBodyEl.innerHTML = "";
+    modalBodyEl.appendChild(detailContent.cloneNode(true));
+    serviceModal.classList.add("is-open");
+    serviceModal.setAttribute("aria-hidden", "false");
+    serviceModal.setAttribute("aria-modal", "true");
+    document.body.style.overflow = "hidden";
+    serviceModal.querySelector(".modal-close")?.focus();
+  }
+
+  function closeServiceModal() {
+    if (!serviceModal) return;
+    serviceModal.classList.remove("is-open");
+    serviceModal.setAttribute("aria-hidden", "true");
+    serviceModal.setAttribute("aria-modal", "false");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("[data-service-toggle]").forEach((btn) => {
+    const card = btn.closest(".service-card");
+    const titleEl = card?.querySelector(".service-card-body h3");
+    const detailId = btn.getAttribute("aria-controls");
+    const detail = detailId ? document.getElementById(detailId) : card?.querySelector(".service-detail");
+    if (!detail) return;
+    const isInline = btn.getAttribute("data-service-expand") === "inline" || card?.classList.contains("service-card-inline");
+    const expandLabel = btn.getAttribute("data-expand-label") || "Read more";
+    const collapseLabel = btn.getAttribute("data-collapse-label") || "Show less";
+    btn.addEventListener("click", () => {
+      if (isInline) {
+        const isOpen = detail.classList.toggle("is-open");
+        detail.setAttribute("aria-hidden", !isOpen);
+        btn.setAttribute("aria-expanded", isOpen);
+        btn.textContent = isOpen ? collapseLabel : expandLabel;
+      } else {
+        openServiceModal(titleEl?.textContent || "", detail);
+      }
+    });
+  });
+
+  serviceModal?.querySelectorAll("[data-modal-close]").forEach((el) => {
+    el.addEventListener("click", closeServiceModal);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && serviceModal?.classList.contains("is-open")) {
+      closeServiceModal();
+    }
+  });
+
   // Mobile nav toggle
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");

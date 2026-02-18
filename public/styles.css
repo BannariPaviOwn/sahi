@@ -822,6 +822,202 @@ a {
   margin: 0;
 }
 
+/* Expandable service detail (Individual Counselling) */
+.service-card-expandable .service-teaser {
+  margin-bottom: 0.5rem;
+}
+
+/* Detail: hidden in card by default; modal cards keep hidden, inline cards expand */
+.service-detail {
+  display: none;
+}
+
+.service-card-inline .service-detail {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.25s ease;
+}
+
+.service-card-inline .service-detail.is-open {
+  max-height: 1200px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.service-detail p,
+.service-detail ul {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.service-detail ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.service-detail li {
+  margin-bottom: 0.35rem;
+}
+
+.service-detail p:last-child {
+  margin-bottom: 0;
+}
+
+.service-read-more {
+  margin-top: 0.75rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease;
+}
+
+.service-read-more:hover {
+  color: var(--primary-soft);
+}
+
+.service-read-more:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Service detail modal (popup) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 41, 38, 0.5);
+  cursor: pointer;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 3rem);
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow), 0 24px 48px rgba(44, 41, 38, 0.15);
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+}
+
+.modal-overlay.is-open .modal-box {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 0;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.modal-close {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  background: var(--border-subtle);
+  color: var(--text);
+}
+
+.modal-close::before {
+  content: "×";
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.modal-body .service-detail,
+.modal-body .modal-detail {
+  display: block;
+}
+
+.modal-body .service-detail p,
+.modal-body .service-detail ul,
+.modal-body .modal-detail p,
+.modal-body .modal-detail ul {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0 0 0.85rem;
+}
+
+.modal-body .service-detail ul,
+.modal-body .modal-detail ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.modal-body .service-detail li,
+.modal-body .modal-detail li {
+  margin-bottom: 0.4rem;
+}
+
+.modal-body .service-detail p:last-child,
+.modal-body .modal-detail p:last-child {
+  margin-bottom: 0;
+}
+
 .services-closing {
   max-width: 32rem;
   margin: 0 auto;
