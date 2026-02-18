@@ -193,6 +193,14 @@ a {
   font-size: 0.95em;
 }
 
+.logo-img {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -1415,13 +1423,9 @@ a {
     min-width: 0;
   }
 
-  .logo-text {
-    white-space: nowrap;
-    font-size: 0.9rem;
-  }
-
-  .logo-tag {
-    font-size: 0.95em;
+  .logo-img {
+    height: 38px;
+    max-width: 180px;
   }
 
   .nav-toggle {
