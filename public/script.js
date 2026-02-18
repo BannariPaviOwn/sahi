@@ -197,10 +197,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const collapseLabel = btn.getAttribute("data-collapse-label") || "Show less";
     btn.addEventListener("click", () => {
       if (isInline) {
+        const wasOpen = detail.classList.contains("is-open");
         const isOpen = detail.classList.toggle("is-open");
         detail.setAttribute("aria-hidden", !isOpen);
         btn.setAttribute("aria-expanded", isOpen);
         btn.textContent = isOpen ? collapseLabel : expandLabel;
+        
+        // Scroll to card when collapsing (Show less clicked) - wait for animation to complete
+        if (wasOpen && !isOpen && card) {
+          let hasScrolled = false;
+          const scrollToCard = () => {
+            if (hasScrolled) return;
+            hasScrolled = true;
+            // Calculate position accounting for any fixed header
+            const cardTop = card.getBoundingClientRect().top + window.pageYOffset;
+            const offset = 20; // Small offset from top
+            window.scrollTo({
+              top: cardTop - offset,
+              behavior: "smooth"
+            });
+          };
+          
+          // Wait for the longest transition (max-height: 0.35s) to complete
+          const handleTransitionEnd = (e) => {
+            // Only trigger on max-height transition (the longest one)
+            if (e.propertyName === "max-height" || e.propertyName === "height") {
+              scrollToCard();
+              detail.removeEventListener("transitionend", handleTransitionEnd);
+            }
+          };
+          
+          detail.addEventListener("transitionend", handleTransitionEnd);
+          // Fallback timeout - wait for max-height transition (350ms) + small buffer
+          setTimeout(() => {
+            scrollToCard();
+            detail.removeEventListener("transitionend", handleTransitionEnd);
+          }, 400);
+        }
       } else {
         openServiceModal(titleEl?.textContent || "", detail);
       }
