@@ -23,9 +23,21 @@ Vercel is made by the Next.js team. One-click deploy from GitHub, free SSL, and 
 3. **Import the project**
    - Click **Add New** → **Project**.
    - Select your `sahi` repository.
-   - Framework Preset: **Next.js** (auto-detected).
-   - Root Directory: leave as **./**.
+   - **Configure Project** screen — set these:
+
+   | Setting | Value | Why |
+   |--------|--------|-----|
+   | **Framework Preset** | Next.js | Auto-detected; leave as is. |
+   | **Root Directory** | `.` (or leave empty) | Your app is at the repo root (`app/`, `package.json` here). |
+   | **Build Command** | `npm run build` (default) | Leave default. |
+   | **Output Directory** | *(leave default)* | Vercel uses Next.js output automatically. |
+   | **Install Command** | `npm install` (default) | Leave default. |
+
+   - **Root Directory** is the only one people often change. If your Next.js app were inside a subfolder (e.g. `apps/web`), you’d set Root Directory to `apps/web`. For this repo, keep it **.** so Vercel uses the repo root.
    - Click **Deploy**.
+
+   **Where to set Root Directory later (if you missed it)**  
+   After the project is created: **Project** → **Settings** → **General** → **Root Directory**. Set to `.` (or leave empty) for this repo.
 
 4. **Set environment variables** (for contact form email)
    - In the project dashboard: **Settings** → **Environment Variables**.
@@ -110,3 +122,40 @@ Your site will be live at a URL like `https://your-project.vercel.app` and, afte
 | `SMTP_FROM` / `CONTACT_TO`| No       | Optional sender/recipient        |
 
 \* Required only if you want the contact form to send email.
+
+---
+
+## 5. Troubleshooting
+
+### Error: `routes-manifest.json` couldn't be found
+
+If the build fails with:
+
+```text
+The file ".../public/routes-manifest.json" couldn't be found.
+```
+
+Vercel is looking for the build in the wrong place (e.g. `public` instead of Next.js’s `.next`). There is often **no “Output Directory”** in the UI for Next.js projects.
+
+**Fix 1: Clear cache and redeploy**
+
+1. **Vercel** → your project → **Deployments**.
+2. Open the **⋯** menu on the latest deployment.
+3. Click **Redeploy**.
+4. Turn **on** “Clear build cache” (or “Redeploy with clean cache”).
+5. Confirm. This forces a fresh build and can clear an old wrong output path.
+
+**Fix 2: Make sure the project is Next.js**
+
+1. **Settings** → **General**.
+2. Under **Framework Preset**, ensure it says **Next.js**. If it says “Other” or something else, change it to **Next.js** and save.
+3. **Redeploy** again (with “Clear build cache” if possible).
+
+**Fix 3: Re-import the project**
+
+If it still fails, create a new project:
+
+1. **Add New** → **Project** → select the same GitHub repo.
+2. Set **Framework Preset** to **Next.js**, **Root Directory** to **.** (or leave empty).
+3. Do **not** set any custom “Output Directory” (leave it blank if you see it).
+4. Deploy. You can delete the old project after the new one works.
