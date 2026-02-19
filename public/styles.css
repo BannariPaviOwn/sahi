@@ -195,9 +195,9 @@ a {
 
 .logo-img {
   display: block;
-  height: 44px;
+  height: 60px;
   width: auto;
-  max-width: 220px;
+  max-width: 260px;
   object-fit: contain;
 }
 
@@ -1424,8 +1424,8 @@ a {
   }
 
   .logo-img {
-    height: 38px;
-    max-width: 180px;
+    height: 48px;
+    max-width: 220px;
   }
 
   .nav-toggle {
