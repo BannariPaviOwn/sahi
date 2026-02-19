@@ -66,7 +66,59 @@ Your site will be live at a URL like `https://your-project.vercel.app` and, afte
 
 ---
 
-## 2. Other hosting options
+## 2. Connect your Namecheap domain to Vercel
+
+After you’ve bought the domain on Namecheap, follow these steps.
+
+### Step 1: Add the domain in Vercel
+
+1. Open your project on **Vercel** → **Settings** → **Domains**.
+2. Under **Add**, enter your domain (e.g. `drsahiwellness.com`) and press **Add**.
+3. Add **www** as well if you want (e.g. `www.drsahiwellness.com`). Vercel will list both.
+4. Vercel will show a **Configuration** section with the DNS records you need. Keep this open.
+
+### Step 2: Get the DNS values from Vercel
+
+In the Domains page, for your domain you’ll see something like:
+
+- **A Record** for root (`@`): type **A**, name **@**, value **`76.76.21.21`** (or the IP Vercel shows).
+- **CNAME Record** for **www**: type **CNAME**, name **www**, value **`cname.vercel-dns.com`** (or what Vercel shows).
+
+Write these down or keep the tab open.
+
+### Step 3: Add DNS records in Namecheap
+
+1. Log in to **Namecheap** → **Domain List** → click **Manage** next to your domain.
+2. Open the **Advanced DNS** tab.
+3. Remove any conflicting records (e.g. if there’s already an A record for `@` pointing elsewhere, delete or edit it).
+4. **Add A record (root domain):**
+   - Click **Add New Record**.
+   - Type: **A Record**.
+   - Host: **@**.
+   - Value: **`76.76.21.21`** (use the IP Vercel gave you).
+   - TTL: **Automatic** (or 300). Save.
+5. **Add CNAME record (www):**
+   - Click **Add New Record**.
+   - Type: **CNAME Record**.
+   - Host: **www**.
+   - Value: **`cname.vercel-dns.com`** (or the CNAME target Vercel shows).
+   - TTL: **Automatic**. Save.
+
+### Step 4: Wait and verify
+
+- DNS can take **5–30 minutes** (sometimes up to 48 hours).
+- In Vercel **Settings** → **Domains**, the domain will show **Valid Configuration** when it’s correct.
+- Open `https://yourdomain.com` and `https://www.yourdomain.com` to confirm they load your site.
+
+### Step 5: Set env and redeploy (for SEO)
+
+1. In Vercel → **Settings** → **Environment Variables**, add or edit:
+   - **`NEXT_PUBLIC_SITE_URL`** = **`https://yourdomain.com`** (no trailing slash).
+2. **Redeploy** the project (Deployments → ⋯ → Redeploy) so sitemap, Open Graph, and canonical URLs use your real domain.
+
+---
+
+## 3. Other hosting options
 
 - **Netlify**  
   [netlify.com](https://netlify.com) → Connect GitHub repo, build command: `npm run build`, publish directory: `.next` (use **Next.js runtime** so it runs `next start` or their Next.js plugin).
@@ -79,7 +131,7 @@ Your site will be live at a URL like `https://your-project.vercel.app` and, afte
 
 ---
 
-## 3. SEO checklist (already done in this project)
+## 4. SEO checklist (already done in this project)
 
 - **Metadata**  
   Title, description, and keywords are set in `app/layout.js`.
@@ -110,7 +162,7 @@ Your site will be live at a URL like `https://your-project.vercel.app` and, afte
 
 ---
 
-## 4. Quick reference: env vars
+## 5. Quick reference: env vars
 
 | Variable                  | Required | Purpose                          |
 |---------------------------|----------|----------------------------------|
@@ -125,7 +177,7 @@ Your site will be live at a URL like `https://your-project.vercel.app` and, afte
 
 ---
 
-## 5. Troubleshooting
+## 6. Troubleshooting
 
 ### Error: `routes-manifest.json` couldn't be found
 
