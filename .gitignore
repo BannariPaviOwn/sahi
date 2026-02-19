@@ -1,8 +1,33 @@
+# Dependencies & build
 node_modules
+.next
+out
+
+# Environment & secrets
 .env
+.env*.local
+
+# Logs & temp
 npm-debug.log*
 logs
 *.log
 *.tmp
-.DS_Store
+.cache
 
+# OS & IDE
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+.cursor
+
+# Duplicate / backup assets (keep only main images)
+*duplicate*
+* copy*
+*.bak
+
+# Legacy static site (app is now Next.js)
+server.js
+public/index.html
+public/script.js
+public/styles.css
