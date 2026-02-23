@@ -274,3 +274,19 @@ If it still fails, create a new project:
 2. Set **Framework Preset** to **Next.js**, **Root Directory** to **.** (or leave empty).
 3. Do **not** set any custom “Output Directory” (leave it blank if you see it).
 4. Deploy. You can delete the old project after the new one works.
+
+---
+
+## 7. Performance (faster loading)
+
+These are already applied in the project:
+
+- **Fonts:** Google Fonts are loaded via `next/font` (no blocking `@import`). Fonts use `display: swap` to avoid invisible text.
+- **Hero image:** The main hero background image is preloaded so it can start loading early.
+- **Images:** The navbar logo, about image, and service card images use the Next.js `Image` component (automatic optimization, lazy loading for below-the-fold images, modern formats when supported).
+
+**Optional improvements:**
+
+- **Compress images in `public/`:** Use tools like [Squoosh](https://squoosh.app) or TinyPNG to reduce file size for `header_background_image.png`, `sahi_image.png`, and images in `public/images/services/`. Keep dimensions reasonable (e.g. hero width 1920px max).
+- **Vercel:** The site is on Vercel’s CDN and compression is enabled by default.
+- **Check speed:** Use [PageSpeed Insights](https://pagespeed.web.dev/) or Vercel Analytics (if enabled) to measure and monitor load times.

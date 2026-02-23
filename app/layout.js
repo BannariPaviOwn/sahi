@@ -1,4 +1,21 @@
 import "./globals.css";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-source-sans",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://drsahiwellness.com";
 
@@ -91,7 +108,10 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${cormorant.variable} ${sourceSans.variable}`}>
+      <head>
+        <link rel="preload" href="/images/header_background_image.png" as="image" />
+      </head>
       <body>
         <script
           type="application/ld+json"

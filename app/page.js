@@ -315,24 +315,25 @@ export default function Home() {
                 <p className="eyebrow outreach-heading">
                   Extending Care Beyond the Clinic
                 </p>
-                <p>Mental health care should not be a privilege.</p>
-                <p>
-                  Alongside private practice, I am actively involved in community-based mental
-                  health work through <strong>Sankalpam Mind & Wellness Foundation</strong>—an
-                  initiative focused on emotional wellbeing, mental health awareness, and
-                  accessible psychological support, especially for underserved populations.
-                </p>
-                <p>
-                  This outreach work reflects a core belief of this practice: Healing is both
-                  personal and collective, and care should reach beyond walls and labels.
-                </p>
+                <p>Mental health care should not be a privilege. Alongside clinical practice, this work extends into communities through <strong>SANKALPAM Mind &amp; Wellness Foundation</strong>, with a focus on promoting emotional wellbeing and making psychological support accessible, especially for underserved and rural populations.</p>
+                <p>This initiative works toward:</p>
+                <ul>
+                  <li>Promoting mental health awareness and emotional wellbeing in communities</li>
+                  <li>Supporting children, adolescents, families, and vulnerable individuals</li>
+                  <li>Creating awareness on suicide prevention, addiction, and digital wellbeing</li>
+                  <li>Reducing stigma and improving access to psychological support</li>
+                  <li>Encouraging early identification and timely support</li>
+                </ul>
+                <p>To check the SANKALPAM website — <a href="https:www.//sankalpammind.org" target="_blank" rel="noopener noreferrer">wwwsankalpammind.org</a></p>
+                <p className="outreach-subheading">Community Volunteer Initiative</p>
+                <p>Individuals who are passionate about supporting mental health in their own villages or rural areas are welcome to join as volunteers. Volunteers serve as important bridges within their communities by spreading awareness, offering empathetic support, and helping individuals connect with appropriate professional care.</p>
+                <p>To ensure volunteers feel confident and supported, free Train-the-Trainer sessions are provided. These programs equip volunteers with essential skills in emotional support and Psychological First Aid, enabling them to offer safe, responsible, and compassionate support within their communities.</p>
               </div>
               <div
                 className="outreach-image"
                 data-animate="fade-up"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600')",
+                  backgroundImage: "url('/images/services/volunterr.webp')",
                 }}
                 title="Community mental health outreach"
               />
@@ -358,7 +359,7 @@ export default function Home() {
                 </div>
                 <div className="contact-item">
                   <strong>Email</strong>
-                  <a href="mailto:contact@drsahiwellness.com">contact@drsahiwellness.com</a>
+                  <a href="mailto:hello@drsahiwellness.com">hello@drsahiwellness.com</a>
                 </div>
                 <div className="contact-item">
                   <strong>Location</strong>
