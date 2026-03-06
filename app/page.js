@@ -347,7 +347,7 @@ export default function Home() {
               <p className="eyebrow">Contact</p>
               <h2>You are welcome here.</h2>
               <p className="section-subtitle">
-                Get in touch to begin or ask a question. In-person (Bangalore & Chennai),
+                Get in touch to begin or ask a question. In-person (Chennai),
                 online, or by appointment.
               </p>
             </div>
@@ -359,12 +359,12 @@ export default function Home() {
                 </div>
                 <div className="contact-item">
                   <strong>Email</strong>
-                  <a href="mailto:hello@drsahiwellness.com">hello@drsahiwellness.com</a>
+                  <a href="mailto:drsahipsy@gmail.com">drsahipsy@gmail.com</a>
                 </div>
                 <div className="contact-item">
                   <strong>Location</strong>
                   <p>
-                    Offline: Bangalore & Chennai
+                    Offline: Chennai
                     <br />
                     Online Consultations: Across Locations
                   </p>
@@ -372,7 +372,7 @@ export default function Home() {
                 <div className="contact-item">
                   <strong>Sessions</strong>
                   <p>
-                    By appointment only. In-person (Bangalore & Chennai), online counselling, or
+                    By appointment only. In-person (Chennai), online counselling, or
                     flexible scheduling where possible.
                   </p>
                 </div>
