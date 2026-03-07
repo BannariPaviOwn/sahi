@@ -26,6 +26,9 @@ Thumbs.db
 * copy*
 *.bak
 
+# Local / internal docs (do not push)
+DEPLOY.md
+
 # Legacy static site (app is now Next.js)
 server.js
 public/index.html

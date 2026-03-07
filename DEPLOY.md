@@ -118,6 +118,69 @@ Write these down or keep the tab open.
 
 ---
 
+## 2b. Production vs Pre-production domains (main vs dev)
+
+Use one domain for **production** (only `main` branch) and a separate domain/subdomain for **pre-production** (e.g. `dev` branch).
+
+### 1. Create and push a `dev` branch
+
+```bash
+git checkout -b dev
+git push -u origin dev
+```
+
+From now on: push to **main** for production, push to **dev** for pre-production.
+
+### 2. Add both domains in Vercel
+
+1. **Vercel** → your project → **Settings** → **Domains**.
+2. **Production domain** (e.g. `sahiwellness.com`):
+   - If already added, skip. Otherwise add it (e.g. `sahiwellness.com` and `www.sahiwellness.com`).
+3. **Pre-production domain** (e.g. subdomain):
+   - Add **`dev.sahiwellness.com`** (or `staging.sahiwellness.com`, `preview.sahiwellness.com` — your choice).
+   - Click **Add**.
+
+### 3. Assign each domain to a Git branch
+
+1. On the **Domains** page, each domain has a **Git Branch** (or “Branch”) setting.
+2. **Production domain** (`sahiwellness.com` / `www.sahiwellness.com`):
+   - Click the domain row or the **Edit** (pencil) icon.
+   - Set **Git Branch** to **`main`**.
+   - Save. Only deployments from `main` will serve this domain.
+3. **Pre-production domain** (`dev.sahiwellness.com`):
+   - Set **Git Branch** to **`dev`**.
+   - Save. Only deployments from `dev` will serve this domain.
+
+### 4. DNS for the pre-production subdomain
+
+In **Namecheap** → **Advanced DNS** for `sahiwellness.com`:
+
+- Add a **CNAME** record:
+  - **Host:** `dev` (so it’s `dev.sahiwellness.com`).
+  - **Value:** `cname.vercel-dns.com` (or the CNAME target Vercel shows for `dev.sahiwellness.com`).
+  - TTL: Automatic. Save.
+
+Wait a few minutes; Vercel will show the domain as valid when DNS is correct.
+
+### 5. Result
+
+| Branch | Domain (example)        | When it updates        |
+|--------|-------------------------|-------------------------|
+| **main** | `sahiwellness.com`, `www.sahiwellness.com` | When you push to **main** |
+| **dev**  | `dev.sahiwellness.com`  | When you push to **dev**  |
+
+- **Production:** push to `main` → only production domain changes.
+- **Pre-production:** push to `dev` → only pre-production domain changes.
+
+### 6. Environment variables (optional)
+
+- For **production** you may want **Production** env only (e.g. `NEXT_PUBLIC_SITE_URL=https://sahiwellness.com`).
+- For **pre-production** you can set **Preview** env (e.g. `NEXT_PUBLIC_SITE_URL=https://dev.sahiwellness.com`) so links and SEO use the right URL per environment.
+
+In **Settings** → **Environment Variables**, when adding a variable you can choose **Production**, **Preview**, or **Development**. Use **Preview** for values that should apply to `dev` (and other preview deployments).
+
+---
+
 ## 3. Other hosting options
 
 - **Netlify**  
@@ -211,3 +274,19 @@ If it still fails, create a new project:
 2. Set **Framework Preset** to **Next.js**, **Root Directory** to **.** (or leave empty).
 3. Do **not** set any custom “Output Directory” (leave it blank if you see it).
 4. Deploy. You can delete the old project after the new one works.
+
+---
+
+## 7. Performance (faster loading)
+
+These are already applied in the project:
+
+- **Fonts:** Google Fonts are loaded via `next/font` (no blocking `@import`). Fonts use `display: swap` to avoid invisible text.
+- **Hero image:** The main hero background image is preloaded so it can start loading early.
+- **Images:** The navbar logo, about image, and service card images use the Next.js `Image` component (automatic optimization, lazy loading for below-the-fold images, modern formats when supported).
+
+**Optional improvements:**
+
+- **Compress images in `public/`:** Use tools like [Squoosh](https://squoosh.app) or TinyPNG to reduce file size for `header_background_image.png`, `sahi_image.png`, and images in `public/images/services/`. Keep dimensions reasonable (e.g. hero width 1920px max).
+- **Vercel:** The site is on Vercel’s CDN and compression is enabled by default.
+- **Check speed:** Use [PageSpeed Insights](https://pagespeed.web.dev/) or Vercel Analytics (if enabled) to measure and monitor load times.
